@@ -1,16 +1,47 @@
 <!doctype html>
-<html lang="en">
+<html lang="da">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Admin</title>
 </head>
 <body>
-  <h1>Admin page</h1>
-  <p>You are logged in.</p>
+  <h1>Admin-side</h1>
+  <p>Her kan du ændre teksten på forsiden.</p>
+
+  <form id="contentForm">
+    <div>
+      <label for="welcomeTitle">Overskrift</label><br>
+      <input type="text" id="welcomeTitle" name="welcomeTitle" style="width: 500px;" required>
+    </div>
+
+    <br>
+
+    <div>
+      <label for="welcomeText1">Første tekst</label><br>
+      <textarea id="welcomeText1" name="welcomeText1" rows="8" style="width: 500px;" required></textarea>
+    </div>
+
+    <br>
+
+    <div>
+      <label for="welcomeText2">Anden tekst</label><br>
+      <textarea id="welcomeText2" name="welcomeText2" rows="8" style="width: 500px;" required></textarea>
+    </div>
+
+    <br>
+
+    <button type="submit">Gem ændringer</button>
+  </form>
+
+  <p id="saveMessage"></p>
+
+  <br>
 
   <form action="/logout" method="POST">
-    <button type="submit">Log out</button>
+    <button type="submit">Log ud</button>
   </form>
+
+  <script src="/js/admin.js"></script>
 </body>
 </html>
