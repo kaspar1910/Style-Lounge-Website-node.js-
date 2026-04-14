@@ -29,7 +29,7 @@ footer{
   height: 48px;
   z-index: 1000;
   overflow: hidden;
-  border-radius: 16px;
+  border-radius: 8px;
   background: #cfc4ae;
   box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
   transition:
@@ -192,7 +192,7 @@ footer{
 .OpeningHours {
     width: 40%;
     background: linear-gradient(145deg, #d7ccb7, #c8bda7);
-    border-radius: 28px;
+    border-radius: 16px;
     padding: 28px 32px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
 }
