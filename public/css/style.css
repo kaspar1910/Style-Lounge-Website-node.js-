@@ -30,7 +30,7 @@ footer{
   z-index: 1000;
   overflow: hidden;
   border-radius: 8px;
-  background: #cfc4ae;
+  background: #AE8A93;
   box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
   transition:
     width 0.35s ease,
@@ -80,7 +80,7 @@ footer{
   font-size: 35px;
   width: 100%;
   height: 6rem;
-  background: #de7e93;
+  background: hsl(354, 30%, 75%);
   text-align: center;
   align-content: center;
   color: #333333;
@@ -113,7 +113,7 @@ footer{
   padding-bottom: 10px;
   width: 100%;
   height: 75px;
-  background: #c4bca7;
+  background: hsl(354, 30%, 75%);
   color: #333333;
   text-align: center;
   font-size: 15px;
@@ -122,7 +122,7 @@ footer{
 }
 
 .SiteFooter a{
-  color: #333333;
+  color: #000000;
   text-decoration: none;
   margin: 0 8px;
 }
@@ -138,11 +138,15 @@ footer{
   padding-top: 5%;
 }
 
+.info-text{
+  color: #000000;
+}
+
 .TextContainer{
   width: 35%;
   height: auto;
   line-height: 1.6;
-  background-color: #c4bca7;
+  background-color: #DFCCD0;
   border-radius: 16px;
   padding: 28px 32px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
@@ -172,7 +176,7 @@ footer{
   align-items: center;
   display: flex;
   justify-content: center;
-  background: hsl(47.4,18.3%,46.1%);
+  background: #AE8A93;
   margin: 0;
   padding: 0;
 }
@@ -206,7 +210,7 @@ footer{
   width: 35%;
   height: auto;
   line-height: 1.6;
-  background-color: #c4bca7;
+  background-color: #DFCCD0;
   border-radius: 16px;
   padding: 28px 32px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
@@ -278,6 +282,7 @@ footer{
   padding: 40px;
   border-radius: 8px;
   box-shadow: 1px 4px 10px rgba(0, 0, 0, 0.2);
+  background-color: #DFCCD0;
 }
 
 .PricesHeader {
