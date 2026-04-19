@@ -80,7 +80,7 @@ footer{
   font-size: 35px;
   width: 100%;
   height: 6rem;
-  background: #c4bca7;
+  background: #de7e93;
   text-align: center;
   align-content: center;
   color: #333333;
@@ -94,6 +94,7 @@ footer{
   display: flex;
   background: #e6e4df;
   flex-direction: column;
+  gap: 50px;
 }
 
 .SiteContent{
@@ -133,18 +134,25 @@ footer{
 .ImageContainer{
   width: 25%;
   height: auto;
+  margin: 0;
+  padding-top: 5%;
 }
 
 .TextContainer{
   width: 35%;
   height: auto;
   line-height: 1.6;
+  background-color: #c4bca7;
+  border-radius: 16px;
+  padding: 28px 32px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
 }
 
 .ImageCss{
   width: 100%;
   height: auto;
-  padding-top: 10%
+  padding-top: 10%;
+  margin: 0;
 }
 
 .TextHeader{
@@ -190,11 +198,18 @@ footer{
 }
 
 .OpeningHours {
-    width: 40%;
-    background: linear-gradient(145deg, #d7ccb7, #c8bda7);
-    border-radius: 16px;
+    width: 50%;
     padding: 28px 32px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+.OHCard{
+  width: 35%;
+  height: auto;
+  line-height: 1.6;
+  background-color: #c4bca7;
+  border-radius: 16px;
+  padding: 28px 32px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
 }
 
 .oh-row {
