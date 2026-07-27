@@ -5,6 +5,7 @@ const path = require('path');
 const session = require('express-session')
 const bcrypt = require('bcrypt')
 const fs = require('fs');
+const crypto = require('crypto');
 const helmet = require('helmet');
 const SQLiteStore = require('connect-sqlite3')(session);
 
@@ -122,6 +123,116 @@ app.post('/api/admin/content', requireAdmin, (req, res) => {
     }   catch (error) {
     console.error('Could not save homepage text:', error);
     return res.status(500).json({ ok: false, message: 'Could not save content' });
+    }
+});
+
+
+
+
+// Produkter til prisside routes og functions:
+const productsFile = path.join(dataFolder, 'products.json');
+
+function ensureProductsFile() {
+    if (!fs.existsSync(productsFile)) {
+        const defaultProducts = {
+            boxes: [
+                { id: 1, title: 'Klip & behandling' },
+                { id: 2, title: 'Farve & striber' }
+            ],
+            products: []
+        };
+
+        fs.writeFileSync(
+            productsFile,
+            JSON.stringify(defaultProducts, null, 2),
+            'utf8'
+        );
+    }
+}
+
+function readProducts() {
+    ensureProductsFile();
+    const raw = fs.readFileSync(productsFile, 'utf8');
+    return JSON.parse(raw);
+}
+
+function writeProducts(data) {
+    fs.writeFileSync(
+        productsFile,
+        JSON.stringify(data, null, 2),
+        'utf8'
+    );
+}
+
+// public route: hent alle bokse + produkter til prissiden
+app.get('/api/products', (req, res) => {
+    try {
+        res.json(readProducts());
+    } catch (error) {
+        console.error('Could not read products file:', error);
+        res.status(500).json({ error: 'Could not read products' });
+    }
+});
+
+// admin route: tilføj et nyt produkt
+app.post('/api/admin/products', requireAdmin, (req, res) => {
+    try {
+        const { name, price, description, box } = req.body;
+
+        if (typeof name !== 'string' || typeof price !== 'string') {
+            return res.status(400).json({ ok: false, message: 'Invalid input' });
+        }
+
+        const trimmedName = name.trim();
+        const trimmedPrice = price.trim();
+        const boxId = Number(box);
+
+        if (!trimmedName || !trimmedPrice) {
+            return res.status(400).json({ ok: false, message: 'Name and price are required' });
+        }
+
+        const data = readProducts();
+
+        if (!data.boxes.some((b) => b.id === boxId)) {
+            return res.status(400).json({ ok: false, message: 'Invalid box' });
+        }
+
+        const newProduct = {
+            id: crypto.randomUUID(),
+            box: boxId,
+            name: trimmedName,
+            price: trimmedPrice,
+            description: typeof description === 'string' ? description.trim() : ''
+        };
+
+        data.products.push(newProduct);
+        writeProducts(data);
+
+        console.log('Product added:', newProduct.name);
+        return res.json({ ok: true, product: newProduct });
+    } catch (error) {
+        console.error('Could not add product:', error);
+        return res.status(500).json({ ok: false, message: 'Could not add product' });
+    }
+});
+
+// admin route: slet et produkt ud fra id
+app.delete('/api/admin/products/:id', requireAdmin, (req, res) => {
+    try {
+        const data = readProducts();
+        const before = data.products.length;
+        data.products = data.products.filter((p) => p.id !== req.params.id);
+
+        if (data.products.length === before) {
+            return res.status(404).json({ ok: false, message: 'Product not found' });
+        }
+
+        writeProducts(data);
+        console.log('Product deleted:', req.params.id);
+        return res.json({ ok: true });
+    } catch (error) {
+        console.error('Could not delete product:', error);
+        return res.status(500).json({ ok: false, message: 'Could not delete product' });
     }
 });
 

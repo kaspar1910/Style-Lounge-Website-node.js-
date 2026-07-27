@@ -1,0 +1,245 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+  background: #e6e4df;
+  color: #333333;
+  min-height: 100vh;
+}
+
+/* Topbar */
+.admin-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 0 32px;
+  height: 5rem;
+  background: hsl(354, 30%, 75%);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+}
+
+.admin-header h1 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 500;
+  color: #333333;
+}
+
+.admin-header .SiteBrand {
+  text-transform: uppercase;
+  font-weight: 800;
+}
+
+/* Layout */
+.admin-main {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 32px 20px 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+/* Kort */
+.admin-card {
+  background: #DFCCD0;
+  border-radius: 16px;
+  padding: 28px 32px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+.admin-card h2 {
+  margin: 0 0 20px;
+  font-size: 22px;
+  color: #333333;
+}
+
+/* Formularer */
+.admin-card label {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 18px;
+}
+
+.admin-card label > span {
+  display: block;
+  margin-bottom: 6px;
+}
+
+.admin-card input[type="text"],
+.admin-card textarea,
+.admin-card select {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #c7aeb4;
+  border-radius: 10px;
+  background: #fbf7f8;
+  font-family: inherit;
+  font-size: 15px;
+  color: #333333;
+}
+
+.admin-card input[type="text"]:focus,
+.admin-card textarea:focus,
+.admin-card select:focus {
+  outline: none;
+  border-color: #AE8A93;
+  box-shadow: 0 0 0 3px rgba(174, 138, 147, 0.25);
+}
+
+.admin-card textarea {
+  resize: vertical;
+}
+
+/* Knapper */
+.btn-primary {
+  padding: 12px 22px;
+  border: none;
+  border-radius: 10px;
+  background: #AE8A93;
+  color: #fff;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.05s ease;
+}
+
+.btn-primary:hover {
+  background: #96727b;
+}
+
+.btn-primary:active {
+  transform: translateY(1px);
+}
+
+.btn-logout {
+  padding: 9px 18px;
+  border: 1px solid #333333;
+  border-radius: 10px;
+  background: transparent;
+  color: #333333;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btn-logout:hover {
+  background: rgba(51, 51, 51, 0.1);
+}
+
+.save-msg {
+  margin: 14px 0 0;
+  font-size: 14px;
+  font-weight: 500;
+  min-height: 18px;
+  color: #6a8a5e;
+}
+
+.save-msg.error {
+  color: #b3574f;
+}
+
+/* Produktliste */
+.product-group {
+  margin-bottom: 22px;
+}
+
+.product-group:last-child {
+  margin-bottom: 0;
+}
+
+.product-group h3 {
+  margin: 0 0 10px;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #8a6b73;
+}
+
+.product-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  background: #fbf7f8;
+  border-radius: 10px;
+  margin-bottom: 8px;
+}
+
+.product-row .p-name {
+  font-weight: 500;
+  flex: 1;
+}
+
+.product-row .p-price {
+  color: #8a6b73;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.product-row .p-desc-badge {
+  font-size: 12px;
+  color: #9a8085;
+}
+
+.btn-delete {
+  padding: 7px 14px;
+  border: none;
+  border-radius: 8px;
+  background: #c98a86;
+  color: #fff;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btn-delete:hover {
+  background: #b3574f;
+}
+
+.empty-note {
+  color: #9a8085;
+  font-size: 14px;
+  font-style: italic;
+}
+
+.back-link {
+  display: inline-block;
+  margin-top: 4px;
+  color: #8a6b73;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 640px) {
+  .admin-header {
+    padding: 0 18px;
+    height: auto;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding-top: 14px;
+    padding-bottom: 14px;
+  }
+
+  .admin-header h1 {
+    font-size: 20px;
+  }
+
+  .admin-card {
+    padding: 22px 18px;
+  }
+}
